@@ -8,7 +8,7 @@
 <meta name="description" content="Juan Diego Silva — Web Developer & IT Specialist with 8+ years building web experiences and 5+ years in IT support. Available for freelance and full-time roles.">
 <meta property="og:title" content="Juan Diego Silva — Web Developer & IT Specialist">
 <meta property="og:description" content="8+ years building web experiences. 5+ years keeping systems running. Based in Maracaibo, Venezuela — working globally.">
-<meta property="og:image" content="IMG_20230706_211844_913.jpg">
+<meta property="og:image" content="profile.jpg">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
 <style>
@@ -69,6 +69,12 @@
     letter-spacing: 0.05em;
   }
 
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
   .nav-links {
     display: flex;
     gap: 2rem;
@@ -99,6 +105,36 @@
   .nav-links a:hover { color: var(--text); }
   .nav-links a:hover::after { width: 100%; }
 
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-bright);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .lang-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .lang-btn:hover { color: var(--text); }
+
+  .lang-btn.lang-active {
+    color: var(--bg);
+    background: var(--accent2);
+    font-weight: 700;
+  }
+
   /* HERO */
   .hero {
     min-height: 100vh;
@@ -121,10 +157,8 @@
 
   .hero-glow {
     position: absolute;
-    top: 20%;
-    left: -10%;
-    width: 600px;
-    height: 600px;
+    top: 20%; left: -10%;
+    width: 600px; height: 600px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(124,106,247,0.07) 0%, transparent 70%);
     pointer-events: none;
@@ -181,8 +215,7 @@
   }
 
   .hero-photo {
-    width: 220px;
-    height: 220px;
+    width: 220px; height: 220px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
@@ -190,12 +223,6 @@
     position: relative;
     z-index: 1;
     border: 3px solid var(--bg);
-  }
-
-  @media (max-width: 640px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .hero-photo-wrap { grid-row: auto; grid-column: 1; justify-self: center; }
-    .hero-photo { width: 160px; height: 160px; }
   }
 
   .hero-tag {
@@ -218,6 +245,7 @@
     display: inline-block;
     box-shadow: 0 0 10px var(--accent2);
     animation: pulse 2.5s ease-in-out infinite;
+    flex-shrink: 0;
   }
 
   @keyframes pulse {
@@ -248,6 +276,14 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 2rem;
+    cursor: default;
+    transition: transform 0.35s ease, filter 0.35s ease;
+    display: inline-block;
+  }
+
+  .hero-role:hover {
+    transform: translateY(-1px) scale(1.02);
+    filter: brightness(1.3);
   }
 
   .hero-desc {
@@ -316,6 +352,14 @@
     margin-top: 4rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border);
+    align-items: flex-end;
+  }
+
+  .hero-stats > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 72px;
   }
 
   .stat-num {
@@ -323,6 +367,14 @@
     font-size: 2.2rem;
     font-weight: 800;
     display: block;
+    line-height: 1;
+    cursor: default;
+    transition: transform 0.35s ease, filter 0.35s ease;
+  }
+
+  .stat-num:hover {
+    transform: translateY(-1px) scale(1.08);
+    filter: brightness(1.35);
   }
 
   .stat-num-purple { color: var(--accent); }
@@ -389,11 +441,7 @@
   }
 
   .about-text p + p { margin-top: 1.25rem; }
-
-  .about-text strong {
-    color: var(--text);
-    font-weight: 700;
-  }
+  .about-text strong { color: var(--text); font-weight: 700; }
 
   .certs {
     margin-top: 1.5rem;
@@ -408,6 +456,13 @@
     padding: 0.35rem 0.75rem;
     border-radius: 4px;
     letter-spacing: 0.05em;
+    cursor: default;
+    transition: transform 0.35s ease, filter 0.35s ease;
+  }
+
+  .cert-badge:hover {
+    transform: translateY(-1px) scale(1.06);
+    filter: brightness(1.35);
   }
 
   .cert-badge:nth-child(3n+1) {
@@ -439,11 +494,7 @@
     gap: 1.1rem;
   }
 
-  .skill-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-  }
+  .skill-item { display: flex; flex-direction: column; gap: 0.45rem; }
 
   .skill-name {
     font-family: 'Space Mono', monospace;
@@ -454,10 +505,7 @@
     justify-content: space-between;
   }
 
-  .skill-pct {
-    color: var(--muted);
-    font-size: 11px;
-  }
+  .skill-pct { color: var(--muted); font-size: 11px; }
 
   .skill-bar-bg {
     height: 4px;
@@ -571,11 +619,7 @@
     margin-bottom: 1.5rem;
   }
 
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
   .tag {
     font-family: 'Space Mono', monospace;
@@ -589,24 +633,17 @@
     transition: color 0.2s, border-color 0.2s;
   }
 
-  .project-card:hover .tag {
-    color: var(--text);
-    border-color: var(--border-bright);
-  }
+  .project-card:hover .tag { color: var(--text); border-color: var(--border-bright); }
 
   .project-link {
     position: absolute;
-    top: 1.75rem;
-    right: 1.75rem;
+    top: 1.75rem; right: 1.75rem;
     font-size: 18px;
     color: var(--muted);
     transition: color 0.2s, transform 0.2s;
   }
 
-  .project-card:hover .project-link {
-    color: var(--text);
-    transform: translate(2px, -2px);
-  }
+  .project-card:hover .project-link { color: var(--text); transform: translate(2px, -2px); }
 
   /* CONTACT */
   #contact {
@@ -685,8 +722,7 @@
   /* SCROLL */
   .scroll-indicator {
     position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
+    bottom: 2.5rem; left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -704,8 +740,7 @@
   }
 
   .scroll-arrow {
-    width: 1px;
-    height: 40px;
+    width: 1px; height: 40px;
     background: linear-gradient(to bottom, var(--muted), transparent);
   }
 
@@ -719,9 +754,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-inner > * {
-    animation: fadeUp 0.7s ease both;
-  }
+  .hero-inner > * { animation: fadeUp 0.7s ease both; }
   .hero-tag   { animation-delay: 0.1s; }
   .hero-name  { animation-delay: 0.2s; }
   .hero-role  { animation-delay: 0.3s; }
@@ -740,7 +773,12 @@
   @media (max-width: 640px) {
     nav { padding: 1rem 1.5rem; }
     .nav-logo { font-size: 12px; }
+    .nav-right { gap: 1rem; }
+    .nav-links { gap: 1rem; }
     .hero { padding: 7rem 1.5rem 4rem; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-photo-wrap { grid-row: auto; grid-column: 1; justify-self: center; }
+    .hero-photo { width: 160px; height: 160px; }
     section { padding: 4rem 1.5rem; }
     .about-grid, .projects-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 1.5rem; }
@@ -753,11 +791,17 @@
 
 <nav>
   <span class="nav-logo">// juandiegosilva.dev</span>
-  <ul class="nav-links">
-    <li><a href="#about">about</a></li>
-    <li><a href="#projects">projects</a></li>
-    <li><a href="#contact">contact</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about" data-i18n="nav.about">about</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">projects</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">contact</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+      <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -769,32 +813,32 @@
     <div class="hero-photo-wrap">
       <img src="profile.jpg" alt="Juan Diego Silva" class="hero-photo">
     </div>
-    <p class="hero-tag">Open to new opportunities</p>
+    <p class="hero-tag" data-i18n="hero.tag">Open to new opportunities</p>
     <h1 class="hero-name">Juan Diego<br>Silva</h1>
-    <p class="hero-role">Web Developer &amp; IT Specialist</p>
-    <p class="hero-desc">8+ years building web experiences. 5+ years keeping systems running. Based in Maracaibo, Venezuela — working globally.</p>
+    <p class="hero-role" data-i18n="hero.role">Web Developer &amp; IT Specialist</p>
+    <p class="hero-desc" data-i18n="hero.desc">8+ years building web experiences. 5+ years keeping systems running. Based in Maracaibo, Venezuela — working globally.</p>
     <div class="hero-ctas">
-      <a href="#projects" class="btn-primary">View my work</a>
-      <a href="#contact" class="btn-ghost">Get in touch</a>
-      <a href="Juan_Silva_CV_2026.pdf" download class="btn-ghost">Download CV ↓</a>
+      <a href="#projects" class="btn-primary" data-i18n="hero.cta.work">View my work</a>
+      <a href="#contact" class="btn-ghost" data-i18n="hero.cta.contact">Get in touch</a>
+      <a href="Juan_Silva_CV_2026.pdf" download class="btn-ghost" data-i18n="hero.cta.cv">Download CV ↓</a>
     </div>
     <div class="hero-stats">
       <div>
         <span class="stat-num stat-num-purple">8+</span>
-        <span class="stat-label">Years dev</span>
+        <span class="stat-label" data-i18n="hero.stat.dev">Years dev</span>
       </div>
       <div>
-        <span class="stat-num stat-num-teal">5+</span>
-        <span class="stat-label">Years IT</span>
+        <span class="stat-num stat-num-teal" style="position:relative;top:-3px">5+</span>
+        <span class="stat-label" data-i18n="hero.stat.it">Years IT</span>
       </div>
       <div>
         <span class="stat-num stat-num-pink">2</span>
-        <span class="stat-label">Languages</span>
+        <span class="stat-label" data-i18n="hero.stat.lang">Languages</span>
       </div>
     </div>
   </div>
   <div class="scroll-indicator">
-    <span>scroll</span>
+    <span data-i18n="hero.scroll">scroll</span>
     <div class="scroll-arrow"></div>
   </div>
 </div>
@@ -803,14 +847,14 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <p class="section-label">// 01. about</p>
-  <h2 class="section-title">Who I am</h2>
+  <p class="section-label" data-i18n="about.label">// 01. about</p>
+  <h2 class="section-title" data-i18n="about.title">Who I am</h2>
   <div class="about-grid">
     <div class="about-text">
-      <p>I'm a <strong>detail-oriented Web Developer and IT Support Specialist</strong> with over 8 years in web development and 5+ years in IT support — a combination that lets me bridge the gap between building great digital experiences and keeping systems running reliably.</p>
-      <p>My technical toolkit spans <strong>HTML, CSS, JavaScript, PHP, Vue.js, WordPress, and Shopify</strong> — paired with hands-on IT expertise in networking, VLANs, VPNs, security compliance (Sophos, ThreatLocker, HIPAA), and endpoint management.</p>
-      <p>I'm a <strong>professional WordPress developer</strong> with deep expertise in <strong>Elementor</strong> — building pixel-perfect, responsive sites and custom page builder layouts that clients can manage themselves without touching code.</p>
-      <p>Fully <strong>bilingual in Spanish and English</strong> — I communicate, document, and deliver in both languages with equal fluency, making collaboration seamless across Latin American and international teams and clients.</p>
+      <p data-i18n-html="about.p1">I'm a <strong>detail-oriented Web Developer and IT Support Specialist</strong> with over 8 years in web development and 5+ years in IT support — a combination that lets me bridge the gap between building great digital experiences and keeping systems running reliably.</p>
+      <p data-i18n-html="about.p2">My technical toolkit spans <strong>HTML, CSS, JavaScript, PHP, Vue.js, WordPress, and Shopify</strong> — paired with hands-on IT expertise in networking, VLANs, VPNs, security compliance (Sophos, ThreatLocker, HIPAA), and endpoint management.</p>
+      <p data-i18n-html="about.p3">I'm a <strong>professional WordPress developer</strong> with deep expertise in <strong>Elementor</strong> — building pixel-perfect, responsive sites and custom page builder layouts that clients can manage themselves without touching code.</p>
+      <p data-i18n-html="about.p4">Fully <strong>bilingual in Spanish and English</strong> — I communicate, document, and deliver in both languages with equal fluency, making collaboration seamless across Latin American and international teams and clients.</p>
       <div class="certs">
         <span class="cert-badge">CompTIA A+</span>
         <span class="cert-badge">HIPAA Compliance</span>
@@ -832,20 +876,17 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <p class="section-label">// 02. projects</p>
-  <h2 class="section-title">What I've built</h2>
+  <p class="section-label" data-i18n="projects.label">// 02. projects</p>
+  <h2 class="section-title" data-i18n="projects.title">What I've built</h2>
   <div class="projects-grid">
 
     <a href="https://www.championmotors.com.pa/" target="_blank" rel="noopener" class="project-card card-accent-purple">
       <span class="project-num">01</span>
       <span class="project-link">↗</span>
       <h3 class="project-title">Champion Motors</h3>
-      <p class="project-desc">Full-stack car dealership platform for a Panamanian client — featuring an inventory system, dynamic listings, and a custom backend for managing vehicle data and leads.</p>
+      <p class="project-desc" data-i18n="proj1.desc">Full-stack car dealership platform for a Panamanian client — featuring an inventory system, dynamic listings, and a custom backend for managing vehicle data and leads.</p>
       <div class="project-tags">
-        <span class="tag">Laravel</span>
-        <span class="tag">PHP</span>
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
+        <span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">HTML</span><span class="tag">CSS</span>
       </div>
     </a>
 
@@ -853,25 +894,19 @@
       <span class="project-num">02</span>
       <span class="project-link">↗</span>
       <h3 class="project-title">After Six Boutique</h3>
-      <p class="project-desc">E-commerce storefront for a clothing boutique — built on Shopify with a focus on elegant product presentation, smooth checkout experience, and mobile-first design.</p>
+      <p class="project-desc" data-i18n="proj2.desc">E-commerce storefront for a clothing boutique — built on Shopify with a focus on elegant product presentation, smooth checkout experience, and mobile-first design.</p>
       <div class="project-tags">
-        <span class="tag">Shopify</span>
-        <span class="tag">Liquid</span>
-        <span class="tag">CSS</span>
-        <span class="tag">E-commerce</span>
+        <span class="tag">Shopify</span><span class="tag">Liquid</span><span class="tag">CSS</span><span class="tag">E-commerce</span>
       </div>
     </a>
-
 
     <a href="https://topbrandsint.com/" target="_blank" rel="noopener" class="project-card card-accent-teal">
       <span class="project-num">03</span>
       <span class="project-link">↗</span>
       <h3 class="project-title">Top Brands International</h3>
-      <p class="project-desc">Corporate website for an international brand distribution company — built with WordPress and Elementor, focused on professional presentation, product showcasing, and lead generation.</p>
+      <p class="project-desc" data-i18n="proj3.desc">Corporate website for an international brand distribution company — built with WordPress and Elementor, focused on professional presentation, product showcasing, and lead generation.</p>
       <div class="project-tags">
-        <span class="tag">WordPress</span>
-        <span class="tag">Elementor</span>
-        <span class="tag">CSS</span>
+        <span class="tag">WordPress</span><span class="tag">Elementor</span><span class="tag">CSS</span>
       </div>
     </a>
 
@@ -879,12 +914,9 @@
       <span class="project-num">04</span>
       <span class="project-link">↗</span>
       <h3 class="project-title">Montemar Tours</h3>
-      <p class="project-desc">Travel & tourism website for a tour operator — showcasing destinations, packages, and booking information with a focus on visual storytelling and a seamless user experience.</p>
+      <p class="project-desc" data-i18n="proj4.desc">Travel & tourism website for a tour operator — showcasing destinations, packages, and booking information with a focus on visual storytelling and a seamless user experience.</p>
       <div class="project-tags">
-        <span class="tag">WordPress</span>
-        <span class="tag">Elementor</span>
-        <span class="tag">CSS</span>
-        <span class="tag">Travel</span>
+        <span class="tag">WordPress</span><span class="tag">Elementor</span><span class="tag">CSS</span><span class="tag">Travel</span>
       </div>
     </a>
 
@@ -895,23 +927,115 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <p class="section-label">// 03. contact</p>
-  <h2 class="section-title">Let's work together</h2>
-  <p style="font-family:'Space Mono',monospace;font-size:13px;color:var(--muted);line-height:1.8;position:relative;">Have a project in mind or a role that fits? I'm currently open to freelance work and full-time opportunities.</p>
+  <p class="section-label" data-i18n="contact.label">// 03. contact</p>
+  <h2 class="section-title" data-i18n="contact.title">Let's work together</h2>
+  <p style="font-family:'Space Mono',monospace;font-size:13px;color:var(--muted);line-height:1.8;position:relative;" data-i18n="contact.desc">Have a project in mind or a role that fits? I'm currently open to freelance work and full-time opportunities.</p>
   <a href="mailto:juandsm27@gmail.com" class="contact-email">juandsm27@gmail.com</a>
   <div class="social-links">
     <a href="https://www.linkedin.com/in/juan-diego-silva-408130195/" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
     <a href="https://wa.me/584146853513" target="_blank" rel="noopener" class="social-link">WhatsApp</a>
-    <a href="tel:+584146853513" class="social-link">Call</a>
+    <a href="tel:+584146853513" class="social-link" data-i18n="social.call">Call</a>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Juan Diego Silva. Designed &amp; built with care.</p>
-  <p>Maracaibo, Venezuela</p>
+  <p data-i18n="footer.copy">© 2026 Juan Diego Silva. Designed &amp; built with care.</p>
+  <p data-i18n="footer.location">Maracaibo, Venezuela</p>
 </footer>
 
 <script>
+  const translations = {
+    en: {
+      'nav.about':      'about',
+      'nav.projects':   'projects',
+      'nav.contact':    'contact',
+      'hero.tag':       'Open to new opportunities',
+      'hero.role':      'Web Developer & IT Specialist',
+      'hero.desc':      '8+ years building web experiences. 5+ years keeping systems running. Based in Maracaibo, Venezuela — working globally.',
+      'hero.cta.work':  'View my work',
+      'hero.cta.contact': 'Get in touch',
+      'hero.cta.cv':    'Download CV ↓',
+      'hero.stat.dev':  'Years dev',
+      'hero.stat.it':   'Years IT',
+      'hero.stat.lang': 'Languages',
+      'hero.scroll':    'scroll',
+      'about.label':    '// 01. about',
+      'about.title':    'Who I am',
+      'about.p1': "I'm a <strong>detail-oriented Web Developer and IT Support Specialist</strong> with over 8 years in web development and 5+ years in IT support — a combination that lets me bridge the gap between building great digital experiences and keeping systems running reliably.",
+      'about.p2': 'My technical toolkit spans <strong>HTML, CSS, JavaScript, PHP, Vue.js, WordPress, and Shopify</strong> — paired with hands-on IT expertise in networking, VLANs, VPNs, security compliance (Sophos, ThreatLocker, HIPAA), and endpoint management.',
+      'about.p3': "I'm a <strong>professional WordPress developer</strong> with deep expertise in <strong>Elementor</strong> — building pixel-perfect, responsive sites and custom page builder layouts that clients can manage themselves without touching code.",
+      'about.p4': 'Fully <strong>bilingual in Spanish and English</strong> — I communicate, document, and deliver in both languages with equal fluency, making collaboration seamless across Latin American and international teams and clients.',
+      'projects.label': '// 02. projects',
+      'projects.title': "What I've built",
+      'proj1.desc': 'Full-stack car dealership platform for a Panamanian client — featuring an inventory system, dynamic listings, and a custom backend for managing vehicle data and leads.',
+      'proj2.desc': 'E-commerce storefront for a clothing boutique — built on Shopify with a focus on elegant product presentation, smooth checkout experience, and mobile-first design.',
+      'proj3.desc': 'Corporate website for an international brand distribution company — built with WordPress and Elementor, focused on professional presentation, product showcasing, and lead generation.',
+      'proj4.desc': 'Travel & tourism website for a tour operator — showcasing destinations, packages, and booking information with a focus on visual storytelling and a seamless user experience.',
+      'contact.label': '// 03. contact',
+      'contact.title': "Let's work together",
+      'contact.desc':  "Have a project in mind or a role that fits? I'm currently open to freelance work and full-time opportunities.",
+      'social.call':   'Call',
+      'footer.copy':   '© 2026 Juan Diego Silva. Designed & built with care.',
+      'footer.location': 'Maracaibo, Venezuela',
+    },
+    es: {
+      'nav.about':      'sobre mí',
+      'nav.projects':   'proyectos',
+      'nav.contact':    'contacto',
+      'hero.tag':       'Abierto a nuevas oportunidades',
+      'hero.role':      'Desarrollador Web & Especialista en IT',
+      'hero.desc':      'Más de 8 años construyendo experiencias web. Más de 5 años manteniendo sistemas en operación. Basado en Maracaibo, Venezuela — trabajando globalmente.',
+      'hero.cta.work':  'Ver mi trabajo',
+      'hero.cta.contact': 'Contáctame',
+      'hero.cta.cv':    'Descargar CV ↓',
+      'hero.stat.dev':  'Años dev',
+      'hero.stat.it':   'Años IT',
+      'hero.stat.lang': 'Idiomas',
+      'hero.scroll':    'bajar',
+      'about.label':    '// 01. sobre mí',
+      'about.title':    'Quién soy',
+      'about.p1': 'Soy un <strong>Desarrollador Web y Especialista en Soporte IT orientado al detalle</strong>, con más de 8 años en desarrollo web y más de 5 años en soporte IT — una combinación que me permite conectar el mundo del desarrollo digital con el de los sistemas confiables.',
+      'about.p2': 'Mi stack técnico incluye <strong>HTML, CSS, JavaScript, PHP, Vue.js, WordPress y Shopify</strong> — complementado con experiencia práctica en redes, VLANs, VPNs, cumplimiento de seguridad (Sophos, ThreatLocker, HIPAA) y gestión de endpoints.',
+      'about.p3': 'Soy un <strong>desarrollador WordPress profesional</strong> con amplia experiencia en <strong>Elementor</strong> — construyendo sitios responsivos y pixel-perfect con layouts personalizados que los clientes pueden gestionar sin tocar código.',
+      'about.p4': 'Completamente <strong>bilingüe en español e inglés</strong> — me comunico, documento y entrego en ambos idiomas con igual fluidez, facilitando la colaboración con equipos y clientes latinoamericanos e internacionales.',
+      'projects.label': '// 02. proyectos',
+      'projects.title': 'Lo que he construido',
+      'proj1.desc': 'Plataforma full-stack para una concesionaria de autos en Panamá — con sistema de inventario, listados dinámicos y un backend personalizado para gestionar vehículos y leads.',
+      'proj2.desc': 'Tienda de e-commerce para una boutique de ropa — desarrollada en Shopify con enfoque en presentación elegante de productos, experiencia de compra fluida y diseño mobile-first.',
+      'proj3.desc': 'Sitio web corporativo para una empresa distribuidora internacional de marcas — desarrollado con WordPress y Elementor, enfocado en presentación profesional, exhibición de productos y generación de leads.',
+      'proj4.desc': 'Sitio web de turismo y viajes para un operador de tours — mostrando destinos, paquetes e información de reservas con énfasis en narrativa visual y experiencia de usuario fluida.',
+      'contact.label': '// 03. contacto',
+      'contact.title': 'Trabajemos juntos',
+      'contact.desc':  '¿Tienes un proyecto en mente o un rol que encaje? Estoy disponible para trabajo freelance y oportunidades de tiempo completo.',
+      'social.call':   'Llamar',
+      'footer.copy':   '© 2026 Juan Diego Silva. Diseñado y construido con cuidado.',
+      'footer.location': 'Maracaibo, Venezuela',
+    }
+  };
+
+  function setLanguage(lang) {
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (translations[lang][key] !== undefined) el.textContent = translations[lang][key];
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.dataset.i18nHtml;
+      if (translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
+    });
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('lang-active', btn.dataset.lang === lang);
+    });
+  }
+
+  // Init language
+  setLanguage(localStorage.getItem('lang') || 'en');
+
+  // Skills
   const skills = [
     { name: 'HTML / CSS',            pct: 95, color: 'linear-gradient(90deg,#7c6af7,#c084fc)' },
     { name: 'JavaScript',            pct: 85, color: 'linear-gradient(90deg,#4ed8c0,#38bdf8)' },
