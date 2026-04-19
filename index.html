@@ -28,7 +28,7 @@
     --card-bg: #0f0f18;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
 
   body {
     background: var(--bg);
@@ -36,6 +36,7 @@
     font-family: 'Syne', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
+    max-width: 100%;
   }
 
   body::before {
@@ -70,9 +71,14 @@
   }
 
   .nav-right {
+    position: fixed;
+    top: 0;
+    right: 3rem;
+    z-index: 100;
     display: flex;
     align-items: center;
     gap: 2rem;
+    padding: 1.25rem 0;
   }
 
   .nav-links {
@@ -770,18 +776,69 @@
     margin: 0 auto;
   }
 
-  @media (max-width: 640px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-logo { font-size: 12px; }
-    .nav-right { gap: 1rem; }
-    .nav-links { gap: 1rem; }
-    .hero { padding: 7rem 1.5rem 4rem; }
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  nav.menu-open .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  nav.menu-open .hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  nav.menu-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
     .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
     .hero-photo-wrap { grid-row: auto; grid-column: 1; justify-self: center; }
     .hero-photo { width: 160px; height: 160px; }
-    section { padding: 4rem 1.5rem; }
     .about-grid, .projects-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.5rem; align-items: center; background: rgb(8,8,14); z-index: 101; }
+    .nav-logo { font-size: 12px; }
+    .hamburger { display: flex; }
+
+    .nav-right {
+      position: fixed;
+      top: 57px; left: 0; right: 0;
+      background: rgb(8,8,14);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 1.5rem;
+      transform: translateY(-110%);
+      transition: transform 0.35s ease;
+      z-index: 99;
+    }
+
+    .nav-right.menu-open {
+      transform: translateY(0);
+    }
+
+    .nav-links { flex-direction: column; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 14px; }
+
+    .hero { padding: 7rem 1.5rem 4rem; }
+    section { padding: 4rem 1.5rem; }
     .hero-stats { gap: 1.5rem; }
+    .scroll-indicator { display: none; }
     #contact { padding: 4rem 1.5rem 6rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
   }
@@ -789,20 +846,23 @@
 </head>
 <body>
 
-<nav>
+<nav id="main-nav">
   <span class="nav-logo">// juandiegosilva.dev</span>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a href="#about" data-i18n="nav.about">about</a></li>
-      <li><a href="#projects" data-i18n="nav.projects">projects</a></li>
-      <li><a href="#contact" data-i18n="nav.contact">contact</a></li>
-    </ul>
-    <div class="lang-toggle">
-      <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
-      <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
-    </div>
-  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-right" id="nav-right">
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav.about">about</a></li>
+    <li><a href="#projects" data-i18n="nav.projects">projects</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">contact</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn lang-active" data-lang="en" onclick="setLanguage('en')">EN</button>
+    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+  </div>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -1034,6 +1094,20 @@
 
   // Init language
   setLanguage(localStorage.getItem('lang') || 'en');
+
+  // Hamburger menu
+  const nav = document.getElementById('main-nav');
+  const navRight = document.getElementById('nav-right');
+  document.getElementById('hamburger').addEventListener('click', () => {
+    nav.classList.toggle('menu-open');
+    navRight.classList.toggle('menu-open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('menu-open');
+      navRight.classList.remove('menu-open');
+    });
+  });
 
   // Skills
   const skills = [
