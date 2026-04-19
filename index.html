@@ -410,22 +410,27 @@
     letter-spacing: 0.05em;
   }
 
-  .cert-badge:nth-child(1),
-  .cert-badge:nth-child(4) {
+  .cert-badge:nth-child(3n+1) {
     background: rgba(124,106,247,0.12);
     border: 1px solid rgba(124,106,247,0.35);
     color: var(--accent);
   }
-  .cert-badge:nth-child(2),
-  .cert-badge:nth-child(5) {
+  .cert-badge:nth-child(3n+2) {
     background: rgba(78,216,192,0.1);
     border: 1px solid rgba(78,216,192,0.3);
     color: var(--accent2);
   }
-  .cert-badge:nth-child(3) {
+  .cert-badge:nth-child(3n) {
     background: rgba(240,111,186,0.1);
     border: 1px solid rgba(240,111,186,0.3);
     color: var(--accent3);
+  }
+
+  .cert-badge-bilingual {
+    background: linear-gradient(135deg, rgba(124,106,247,0.15), rgba(78,216,192,0.15)) !important;
+    border: 1px solid rgba(124,106,247,0.4) !important;
+    color: var(--text) !important;
+    font-weight: 700;
   }
 
   .skills-list {
@@ -805,14 +810,18 @@
       <p>I'm a <strong>detail-oriented Web Developer and IT Support Specialist</strong> with over 8 years in web development and 5+ years in IT support — a combination that lets me bridge the gap between building great digital experiences and keeping systems running reliably.</p>
       <p>My technical toolkit spans <strong>HTML, CSS, JavaScript, PHP, Vue.js, WordPress, and Shopify</strong> — paired with hands-on IT expertise in networking, VLANs, VPNs, security compliance (Sophos, ThreatLocker, HIPAA), and endpoint management.</p>
       <p>I'm a <strong>professional WordPress developer</strong> with deep expertise in <strong>Elementor</strong> — building pixel-perfect, responsive sites and custom page builder layouts that clients can manage themselves without touching code.</p>
-      <p>Bilingual in Spanish and English. Open to hybrid or specialized roles where both my development and IT skills can shine.</p>
+      <p>Fully <strong>bilingual in Spanish and English</strong> — I communicate, document, and deliver in both languages with equal fluency, making collaboration seamless across Latin American and international teams and clients.</p>
       <div class="certs">
         <span class="cert-badge">CompTIA A+</span>
         <span class="cert-badge">HIPAA Compliance</span>
         <span class="cert-badge">Sophos</span>
         <span class="cert-badge">ThreatLocker</span>
         <span class="cert-badge">Elementor Expert</span>
-        <span class="cert-badge">Bilingual ES/EN</span>
+        <span class="cert-badge">PHP</span>
+        <span class="cert-badge">Laravel</span>
+        <span class="cert-badge">Figma</span>
+        <span class="cert-badge">Illustrator</span>
+        <span class="cert-badge cert-badge-bilingual">Bilingual ES / EN</span>
       </div>
     </div>
     <div class="skills-list" id="skills-container"></div>
@@ -904,13 +913,16 @@
 
 <script>
   const skills = [
-    { name: 'HTML / CSS',      pct: 95, color: 'linear-gradient(90deg,#7c6af7,#c084fc)' },
-    { name: 'JavaScript',      pct: 85, color: 'linear-gradient(90deg,#4ed8c0,#38bdf8)' },
-    { name: 'PHP / Laravel',   pct: 80, color: 'linear-gradient(90deg,#f06fba,#fb923c)' },
+    { name: 'HTML / CSS',            pct: 95, color: 'linear-gradient(90deg,#7c6af7,#c084fc)' },
+    { name: 'JavaScript',            pct: 85, color: 'linear-gradient(90deg,#4ed8c0,#38bdf8)' },
+    { name: 'PHP',                   pct: 82, color: 'linear-gradient(90deg,#f06fba,#fb923c)' },
+    { name: 'Laravel',               pct: 78, color: 'linear-gradient(90deg,#f06fba,#fb923c)' },
     { name: 'WordPress / Elementor', pct: 92, color: 'linear-gradient(90deg,#7c6af7,#c084fc)' },
-    { name: 'Shopify',         pct: 82, color: 'linear-gradient(90deg,#4ed8c0,#38bdf8)' },
-    { name: 'Vue.js',          pct: 75, color: 'linear-gradient(90deg,#f06fba,#fb923c)' },
-    { name: 'IT / Networking', pct: 90, color: 'linear-gradient(90deg,#7c6af7,#4ed8c0)' },
+    { name: 'Shopify',               pct: 82, color: 'linear-gradient(90deg,#4ed8c0,#38bdf8)' },
+    { name: 'Vue.js',                pct: 75, color: 'linear-gradient(90deg,#f06fba,#fb923c)' },
+    { name: 'Figma',                 pct: 80, color: 'linear-gradient(90deg,#4ed8c0,#7c6af7)' },
+    { name: 'Illustrator',           pct: 72, color: 'linear-gradient(90deg,#f06fba,#fb923c)' },
+    { name: 'IT / Networking',       pct: 90, color: 'linear-gradient(90deg,#7c6af7,#4ed8c0)' },
   ];
 
   const container = document.getElementById('skills-container');
