@@ -652,6 +652,17 @@
 
   .project-card:hover .project-link { color: var(--text); transform: translate(2px, -2px); }
 
+  /* TOOLS */
+  .card-accent-gold::before  { background: linear-gradient(90deg, #f59e0b, transparent); }
+  .card-accent-gold::after   { background: radial-gradient(ellipse 60% 40% at 30% 0%, rgba(245,158,11,0.07), transparent); }
+
+  .tool-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    line-height: 1;
+  }
+
   /* CONTACT */
   #contact {
     text-align: center;
@@ -857,6 +868,7 @@
   <ul class="nav-links">
     <li><a href="#about" data-i18n="nav.about">about</a></li>
     <li><a href="#projects" data-i18n="nav.projects">projects</a></li>
+    <li style="display:none"><a href="#tools" data-i18n="nav.tools">tools</a></li>
     <li><a href="#contact" data-i18n="nav.contact">contact</a></li>
   </ul>
   <div class="lang-toggle">
@@ -986,9 +998,64 @@
 
 <div class="divider"></div>
 
+<!-- TOOLS -->
+<section id="tools" style="display:none">
+  <p class="section-label" data-i18n="tools.label">// 03. tools</p>
+  <h2 class="section-title" data-i18n="tools.title">Financial Calculators</h2>
+  <div class="projects-grid">
+
+    <a href="https://juandsm27.github.io/investment-calculator/" target="_blank" rel="noopener" class="project-card card-accent-purple">
+      <span class="project-num">01</span>
+      <span class="project-link">↗</span>
+      <span class="tool-icon">📈</span>
+      <h3 class="project-title" data-i18n="tool1.title">Investment Calculator</h3>
+      <p class="project-desc" data-i18n="tool1.desc">Compound growth simulator with configurable contribution frequency, compounding periods, and visual breakdowns — bar chart + pie charts for year-one and final balance.</p>
+      <div class="project-tags">
+        <span class="tag">Vue.js</span><span class="tag">amCharts</span><span class="tag">Vuetify</span>
+      </div>
+    </a>
+
+    <a href="https://juandsm27.github.io/dividend-calculator/" target="_blank" rel="noopener" class="project-card card-accent-teal">
+      <span class="project-num">02</span>
+      <span class="project-link">↗</span>
+      <span class="tool-icon">💰</span>
+      <h3 class="project-title" data-i18n="tool2.title">Dividend Calculator</h3>
+      <p class="project-desc" data-i18n="tool2.desc">DRIP portfolio tracker with dividend reinvestment modeling, portfolio growth projections, and multi-chart visualizations across time horizons.</p>
+      <div class="project-tags">
+        <span class="tag">Vue.js</span><span class="tag">amCharts</span><span class="tag">Vuetify</span>
+      </div>
+    </a>
+
+    <a href="https://juandsm27.github.io/intrinsic-value-calculator/" target="_blank" rel="noopener" class="project-card card-accent-pink">
+      <span class="project-num">03</span>
+      <span class="project-link">↗</span>
+      <span class="tool-icon">🔍</span>
+      <h3 class="project-title" data-i18n="tool3.title">Intrinsic Value Calculator</h3>
+      <p class="project-desc" data-i18n="tool3.desc">DCF-based stock valuation with bull / base / bear scenario analysis. Select a stock to auto-fill live price and EPS via Finnhub API.</p>
+      <div class="project-tags">
+        <span class="tag">Vue.js</span><span class="tag">amCharts</span><span class="tag">Finnhub API</span>
+      </div>
+    </a>
+
+    <a href="https://juandsm27.github.io/credit-card-debt-calculator/" target="_blank" rel="noopener" class="project-card card-accent-gold">
+      <span class="project-num">04</span>
+      <span class="project-link">↗</span>
+      <span class="tool-icon">💳</span>
+      <h3 class="project-title" data-i18n="tool4.title">Credit Card Debt Calculator</h3>
+      <p class="project-desc" data-i18n="tool4.desc">Multi-card payoff planner with amortization tables, interest breakdowns, and total repayment timeline across up to 10 cards simultaneously.</p>
+      <div class="project-tags">
+        <span class="tag">Vue.js</span><span class="tag">Vuetify</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<div class="divider" id="tools-divider" style="display:none"></div>
+
 <!-- CONTACT -->
 <section id="contact">
-  <p class="section-label" data-i18n="contact.label">// 03. contact</p>
+  <p class="section-label" data-i18n="contact.label">// 04. contact</p>
   <h2 class="section-title" data-i18n="contact.title">Let's work together</h2>
   <p style="font-family:'Space Mono',monospace;font-size:13px;color:var(--muted);line-height:1.8;position:relative;" data-i18n="contact.desc">Have a project in mind or a role that fits? I'm currently open to freelance work and full-time opportunities.</p>
   <a href="mailto:juandsm27@gmail.com" class="contact-email">juandsm27@gmail.com</a>
@@ -1026,13 +1093,24 @@
       'about.p2': 'My technical toolkit spans <strong>HTML, CSS, JavaScript, PHP, Vue.js, WordPress, and Shopify</strong> — paired with hands-on IT expertise in networking, VLANs, VPNs, security compliance (Sophos, ThreatLocker, HIPAA), and endpoint management.',
       'about.p3': "I'm a <strong>professional WordPress developer</strong> with deep expertise in <strong>Elementor</strong> — building pixel-perfect, responsive sites and custom page builder layouts that clients can manage themselves without touching code.",
       'about.p4': 'Fully <strong>bilingual in Spanish and English</strong> — I communicate, document, and deliver in both languages with equal fluency, making collaboration seamless across Latin American and international teams and clients.',
+      'nav.tools':       'tools',
       'projects.label': '// 02. projects',
       'projects.title': "What I've built",
       'proj1.desc': 'Full-stack car dealership platform for a Panamanian client — featuring an inventory system, dynamic listings, and a custom backend for managing vehicle data and leads.',
       'proj2.desc': 'E-commerce storefront for a clothing boutique — built on Shopify with a focus on elegant product presentation, smooth checkout experience, and mobile-first design.',
       'proj3.desc': 'Corporate website for an international brand distribution company — built with WordPress and Elementor, focused on professional presentation, product showcasing, and lead generation.',
       'proj4.desc': 'Travel & tourism website for a tour operator — showcasing destinations, packages, and booking information with a focus on visual storytelling and a seamless user experience.',
-      'contact.label': '// 03. contact',
+      'tools.label':   '// 03. tools',
+      'tools.title':   'Financial Calculators',
+      'tool1.title':   'Investment Calculator',
+      'tool1.desc':    'Compound growth simulator with configurable contribution frequency, compounding periods, and visual breakdowns — bar chart + pie charts for year-one and final balance.',
+      'tool2.title':   'Dividend Calculator',
+      'tool2.desc':    'DRIP portfolio tracker with dividend reinvestment modeling, portfolio growth projections, and multi-chart visualizations across time horizons.',
+      'tool3.title':   'Intrinsic Value Calculator',
+      'tool3.desc':    'DCF-based stock valuation with bull / base / bear scenario analysis. Select a stock to auto-fill live price and EPS via Finnhub API.',
+      'tool4.title':   'Credit Card Debt Calculator',
+      'tool4.desc':    'Multi-card payoff planner with amortization tables, interest breakdowns, and total repayment timeline across up to 10 cards simultaneously.',
+      'contact.label': '// 04. contact',
       'contact.title': "Let's work together",
       'contact.desc':  "Have a project in mind or a role that fits? I'm currently open to freelance work and full-time opportunities.",
       'social.call':   'Call',
@@ -1059,13 +1137,24 @@
       'about.p2': 'Mi stack técnico incluye <strong>HTML, CSS, JavaScript, PHP, Vue.js, WordPress y Shopify</strong> — complementado con experiencia práctica en redes, VLANs, VPNs, cumplimiento de seguridad (Sophos, ThreatLocker, HIPAA) y gestión de endpoints.',
       'about.p3': 'Soy un <strong>desarrollador WordPress profesional</strong> con amplia experiencia en <strong>Elementor</strong> — construyendo sitios responsivos y pixel-perfect con layouts personalizados que los clientes pueden gestionar sin tocar código.',
       'about.p4': 'Completamente <strong>bilingüe en español e inglés</strong> — me comunico, documento y entrego en ambos idiomas con igual fluidez, facilitando la colaboración con equipos y clientes latinoamericanos e internacionales.',
+      'nav.tools':       'herramientas',
       'projects.label': '// 02. proyectos',
       'projects.title': 'Lo que he construido',
       'proj1.desc': 'Plataforma full-stack para una concesionaria de autos en Panamá — con sistema de inventario, listados dinámicos y un backend personalizado para gestionar vehículos y leads.',
       'proj2.desc': 'Tienda de e-commerce para una boutique de ropa — desarrollada en Shopify con enfoque en presentación elegante de productos, experiencia de compra fluida y diseño mobile-first.',
       'proj3.desc': 'Sitio web corporativo para una empresa distribuidora internacional de marcas — desarrollado con WordPress y Elementor, enfocado en presentación profesional, exhibición de productos y generación de leads.',
       'proj4.desc': 'Sitio web de turismo y viajes para un operador de tours — mostrando destinos, paquetes e información de reservas con énfasis en narrativa visual y experiencia de usuario fluida.',
-      'contact.label': '// 03. contacto',
+      'tools.label':   '// 03. herramientas',
+      'tools.title':   'Calculadoras Financieras',
+      'tool1.title':   'Calculadora de Inversión',
+      'tool1.desc':    'Simulador de crecimiento compuesto con frecuencia de contribuciones y períodos de capitalización configurables — gráfico de barras y tortas para el primer año y balance final.',
+      'tool2.title':   'Calculadora de Dividendos',
+      'tool2.desc':    'Tracker de cartera DRIP con modelado de reinversión de dividendos, proyecciones de crecimiento y visualizaciones multi-gráfico a lo largo del tiempo.',
+      'tool3.title':   'Calculadora de Valor Intrínseco',
+      'tool3.desc':    'Valuación de acciones basada en DCF con análisis de escenarios alcista / base / bajista. Selecciona una acción para autocompletar precio y EPS en tiempo real.',
+      'tool4.title':   'Calculadora de Deuda Crediticia',
+      'tool4.desc':    'Planificador de pago multi-tarjeta con tablas de amortización, desglose de intereses y línea de tiempo de pago total para hasta 10 tarjetas simultáneas.',
+      'contact.label': '// 04. contacto',
       'contact.title': 'Trabajemos juntos',
       'contact.desc':  '¿Tienes un proyecto en mente o un rol que encaje? Estoy disponible para trabajo freelance y oportunidades de tiempo completo.',
       'social.call':   'Llamar',
